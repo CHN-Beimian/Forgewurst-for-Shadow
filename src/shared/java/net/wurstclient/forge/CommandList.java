@@ -12,6 +12,7 @@ import net.wurstclient.forge.compatibility.WCommandList;
 
 public final class CommandList extends WCommandList
 {
+	public final HUDCmd hudCmd=register(new HUDCmd());
 	public final RegCmd regCmd=register(new RegCmd());
 	public final UpdateCmd updateCmd=register(new UpdateCmd());
 	public final UnlockCmd unlockCmd=register(new UnlockCmd());

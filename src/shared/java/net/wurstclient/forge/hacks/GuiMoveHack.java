@@ -25,6 +25,8 @@ import net.wurstclient.forge.KeybindList.Keybind;
 import net.wurstclient.forge.KeybindProcessor;
 import net.wurstclient.forge.clickgui.ClickGui;
 import net.wurstclient.forge.loader.ModKeyLoader;
+import net.wurstclient.forge.utils.ChatUtils;
+import net.wurstclient.forge.utils.KeyBindingUtils;
 import net.wurstclient.forge.utils.ReflectionUtils;
 
 public class GuiMoveHack extends Hack {
@@ -52,10 +54,15 @@ public class GuiMoveHack extends Hack {
 			KeyBinding[] array;
 			for (int length = (array = key).length, i = 0; i < length; ++i) {
 				KeyBinding b = array[i];
-				KeyBinding.setKeyBindState(b.getKeyCode(), Keyboard.isKeyDown(b.getKeyCode()));
-				
+				KeyBindingUtils.setPressed(b, b.isKeyDown());
+				if(b.isKeyDown()) {
+					ChatUtils.message(b.getDisplayName()+"ok");
+				}
 			}
-		
+			KeyBinding b = array[1];
+			if(b.isKeyDown()) {
+				ChatUtils.message(b.getDisplayName()+"ok");
+			}
 
 		} /*
 			 * else if (mc.currentScreen == null) { for (KeyBinding bind : ) { if

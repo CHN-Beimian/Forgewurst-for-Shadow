@@ -280,7 +280,7 @@ public final class KillauraHack extends Hack {
 			}
 			if (wurst.getHax().teamsHack.isEnabled()) {
 
-				stream = stream.filter(e -> !(e instanceof EntityPlayer && wurst.getHax().teamsHack.isTeam(e)));
+				stream = stream.filter(e -> (e instanceof EntityPlayer && wurst.getHax().teamsHack.isTeam(e)));
 			}
 
 			target = stream.min(priority.getSelected().comparator).orElse(null);

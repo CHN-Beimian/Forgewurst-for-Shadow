@@ -4,10 +4,12 @@ import java.lang.reflect.Field;
 
 import com.google.common.eventbus.Subscribe;
 
+import io.netty.handler.codec.http2.Http2FrameLogger.Direction;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -22,17 +24,18 @@ import net.wurstclient.forge.settings.EnumSetting;
 import net.wurstclient.forge.settings.SliderSetting;
 import net.wurstclient.forge.settings.SliderSetting.ValueDisplay;
 import net.wurstclient.forge.utils.BlockInteractionHelper;
+import net.wurstclient.forge.utils.BlockUtils;
 import net.wurstclient.forge.utils.EntityUtils;
 import net.wurstclient.forge.utils.Wrapper;
 
 public class ScaffoldHack extends Hack {
-	private final EnumSetting<Mode> mode=new EnumSetting<ScaffoldHack.Mode>("Mode", Mode.values(), Mode.Safety);
+	private final EnumSetting<Mode> mode=new EnumSetting<ScaffoldHack.Mode>("Mode", Mode.values(), Mode.Wurst);
 	BlockInteractionHelper blockhelper = new BlockInteractionHelper();
 	private final SliderSetting future = new SliderSetting("future", 2, 0, 60, 2, ValueDisplay.DECIMAL);
 
 	public ScaffoldHack() {
 		super("Scaffold", "Automatically place blocks under your feet");
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½
 		setCategory(Category.PLAYER);
 		addSetting(future);
 		addSetting(mode);
@@ -129,21 +132,13 @@ public class ScaffoldHack extends Hack {
 			mc.player.swingArm(EnumHand.MAIN_HAND);
 		}
 		}
-		}else if(mode.getSelected()==Mode.Safety) {
-			if (mc.player == null)
-				return;
-			Vec3d vec3d = EntityUtils.getInterpolatedPos(mc.player, future.getValueF());
-			BlockPos blockPos = new BlockPos(vec3d).down();
-			BlockPos belowBlockPos = blockPos.down();
-
-			// check if block is already placed
-			if (Wrapper.getWorld().getBlockState(blockPos).getBlock() instanceof BlockAir) {
-				mc.player.setSneaking(true);
-			}
+		}else if(mode.getSelected()==Mode.Wurst) {
+			
+		
 		}
 	}
 	private enum Mode{
-		M1,Safety
+		M1,Wurst
 	}
-
+	
 }

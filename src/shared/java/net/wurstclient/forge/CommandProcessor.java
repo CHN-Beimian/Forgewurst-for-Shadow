@@ -28,7 +28,7 @@ public final class CommandProcessor
 	public void onSentMessage(WChatOutputEvent event)
 	{
 		String message = event.getMessage().trim();
-		if(!message.startsWith("."))
+		if(!message.startsWith("+"))
 			return;
 		
 		event.setCanceled(true);

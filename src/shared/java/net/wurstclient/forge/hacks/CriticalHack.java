@@ -1,5 +1,7 @@
 package net.wurstclient.forge.hacks;
 
+import com.google.common.collect.MapDifference.ValueDifference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,20 +21,26 @@ import net.wurstclient.forge.Category;
 import net.wurstclient.forge.Hack;
 import net.wurstclient.forge.settings.EnumSetting;
 import net.wurstclient.forge.settings.SliderSetting;
+import net.wurstclient.forge.settings.SliderSetting.ValueDisplay;
 import net.wurstclient.forge.utils.ChatUtils;
 import net.wurstclient.forge.utils.TimerUtil;
 import net.wurstclient.forge.utils.Wrapper;
 
 public class CriticalHack extends Hack {
 	private final EnumSetting<Mode> mode = new EnumSetting<CriticalHack.Mode>("Mode", Mode.values(), Mode.PACKET);
+	private final SliderSetting Time =new SliderSetting("Time", 40, 0, 100, 10, ValueDisplay.DECIMAL);
 	TimerUtil timer;
 	boolean isAttack;
 	boolean cancelSomePackets;
-
+	private boolean shouldCrit = false;
+	long lastCrit = System.currentTimeMillis();
+	public int time=0;
+	
 	public CriticalHack() {
 		super("Critical", "Changes all your hits to critical hits.");
 		setCategory(Category.COMBAT);
 		addSetting(mode);
+		
 	}
 
 	@Override
@@ -47,7 +55,9 @@ public class CriticalHack extends Hack {
 
 	@SubscribeEvent
 	public void onUpdate(TickEvent.PlayerTickEvent event) {
+		
 		doCritical();
+	
 	}
 
 	public void doCritical() {
@@ -61,8 +71,12 @@ public class CriticalHack extends Hack {
 
 		if (mc.player.isInWater() || mc.player.isInLava())
 			return;
-
 		switch (mode.getSelected()) {
+	
+		case M1:
+			doAACJump();
+				
+			break;
 		case TEST:
 
 			doTestJump();
@@ -78,13 +92,49 @@ public class CriticalHack extends Hack {
 
 		case FULL_JUMP:
 			doFullJump();
-			break;
-		}
+		break;
 	}
+	}
+	private void doAACJump() {
+		if(mc.player==null)
+			return;
+		if (!isEnabled())
+			return;
+
+		if (!mc.player.onGround)
+			return;
+
+		if (mc.player.isInWater() || mc.player.isInLava())
+			return;
+		if(!wurst.getHax().killauraHack.isEnabled())
+			return;
+			/* mc.player.onCriticalHit(wurst.getHax().killauraHack.gettarget()); */
+			if (mc.objectMouseOver.entityHit == null && wurst.getHax().killauraHack.gettarget() == null
+			&& wurst.getHax().tpAura.gettarget() == null&&wurst.getHax().killauraSigmaHack.gettarget()==null) 
+		return;
+	
+
+	double posX = mc.player.posX;
+	double posY = mc.player.posY;
+	double posZ = mc.player.posZ;
+
+		
+	mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(posX, posY + 0.0625D, posZ,
+			mc.player.rotationYaw, mc.player.rotationPitch, true));
+	mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(posX, posY, posZ, mc.player.rotationYaw,
+			mc.player.rotationPitch, false));
+	mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(posX, posY + 1.1E-5D, posZ,
+			mc.player.rotationYaw, mc.player.rotationPitch, false));
+	mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(posX, posY, posZ, mc.player.rotationYaw,
+			mc.player.rotationPitch, false));
+	
+		
+	}
+	
 
 	/*
 	 * @SubscribeEvent public boolean onAttack(WPacketOutputEvent event) {
-	 * ChatUtils.message("C！"); if(mc.player==null) isAttack=false;
+	 * ChatUtils.message("C锟斤拷"); if(mc.player==null) isAttack=false;
 	 * if(mode.getSelected()==Mode.TEST) { if(event.getPacket()instanceof
 	 * CPacketPlayer.Position) { CPacketUseEntity attack = (CPacketUseEntity)
 	 * event.getPacket(); if(attack.getAction()
@@ -104,7 +154,7 @@ public class CriticalHack extends Hack {
 	}
 
 	private void doMiniJump() {
-		// TODO 自动生成的方法存根
+		
 		mc.player.addVelocity(0, 0.1, 0);
 		mc.player.fallDistance = 0.1F;
 		mc.player.onGround = false;
@@ -182,7 +232,7 @@ public class CriticalHack extends Hack {
 	}
 
 	private enum Mode {
-		PACKET("Packet"), MINI_JUMP("Mini Jump"), FULL_JUMP("Full Jump"), TEST("Test");
+		PACKET("Packet"), MINI_JUMP("Mini Jump"), FULL_JUMP("Full Jump"), TEST("Test"),M1("M1");
 
 		private final String name;
 

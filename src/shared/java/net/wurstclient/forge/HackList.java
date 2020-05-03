@@ -15,12 +15,15 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
+import net.wurstclient.forge.clickgui.ClickGui;
 import net.wurstclient.forge.compatibility.WHackList;
 import net.wurstclient.forge.hacks.*;
 import net.wurstclient.forge.settings.Setting;
 import net.wurstclient.forge.utils.JsonUtils;
 
 public final class HackList extends WHackList {
+	//
+	
 	public final InformationHUD informationHUD=register(new InformationHUD());
 	public final TeamsHack teamsHack=register(new TeamsHack());
 	public final TeleportHitHack teleportHitHack=register(new TeleportHitHack());
@@ -238,4 +241,5 @@ public final class HackList extends WHackList {
 			e.printStackTrace();
 		}
 	}
+	
 }

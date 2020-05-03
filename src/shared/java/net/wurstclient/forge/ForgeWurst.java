@@ -12,6 +12,8 @@ import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.util.List;
+
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.LoadController;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -81,12 +83,33 @@ public final class ForgeWurst
 	private CommandProcessor cmdProcessor;
 	private KeybindProcessor keybindProcessor;
 	private WurstUpdater updater;
+	
+	public  ForgeWurst() {
+		forgeWurst=this;
+		MinecraftForge.EVENT_BUS.register(this);
+		forgeWurst.getHax();
+		forgeWurst.getHax();
+		forgeWurst.getCmds();
+		forgeWurst.getGui();
+		forgeWurst.getHud();
+		forgeWurst.getCmds();
+		forgeWurst.getKeybinds();
+		forgeWurst.getWurstFolder();
+		
+		
+	}
+	public static void inject()
+	  {
+	    if (getForgeWurst() == null) {
+	      forgeWurst = new ForgeWurst();
+	    }
+	  }
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 	
-		log.info("Starting Hurricane " + ForgeWurst.VERSION); //Æô¶¯ĞÅÏ¢
-        log.info("Copyright (c) Beimian, 2020-2021");
+		log.info("Starting Shadow " + ForgeWurst.VERSION); //å¯åŠ¨ä¿¡æ¯
+        log.info("Copyright (c) Zenwix, 2020-2021");
 		/* FontManager fm= new FontManager(); */
         Display.setTitle("Forgewurst For Shadow");
         
@@ -103,7 +126,7 @@ public final class ForgeWurst
 		obfuscated = !mcClassName.equals(remapper.unmap(mcClassName));
 		
 		configFolder =
-			Minecraft.getMinecraft().mcDataDir.toPath().resolve("Sanction");
+			Minecraft.getMinecraft().mcDataDir.toPath().resolve("Shadow");
 		try
 		{
 			Files.createDirectories(configFolder);
@@ -187,11 +210,14 @@ public final class ForgeWurst
 	}
 
 	public boolean isEnabled() {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		return enabled;
 	}
 	public Friends getFriends() {
 		return friends;
+	}
+	public IngameHUD getHud() {
+		return hud;
 	}
 
 	/*

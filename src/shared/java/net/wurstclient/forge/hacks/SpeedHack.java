@@ -264,11 +264,52 @@ public class SpeedHack extends Hack {
                 setMotion(speed);
                 ++stage;
             }
+		}else if(mode.getSelected()==Mode.AAC) {
+			
+				boolean boost = Math.abs(Wrapper.getPlayer().rotationYawHead - Wrapper.getPlayer().rotationYaw) < 90;
+				if (Wrapper.getPlayer().moveForward > 0 && Wrapper.getPlayer().hurtTime < 5) {
+					if (Wrapper.getPlayer().onGround) {
+						Wrapper.getPlayer().jump();
+						Wrapper.getPlayer().motionY = 0.405;
+						float f = PlayerControllerUtils.getDirection();
+						Wrapper.getPlayer().motionX -= (double) (MathHelper.sin(f) * 0);
+						Wrapper.getPlayer().motionZ += (double) (MathHelper.cos(f) * 0);
+					} else {
+						double currentSpeed = Math.sqrt(Wrapper.getPlayer().motionX * Wrapper.getPlayer().motionX
+								+ Wrapper.getPlayer().motionZ * Wrapper.getPlayer().motionZ);
+						double speed = boost ? 1.0064 : 1.001;
+
+						double direction = PlayerControllerUtils.getDirection();
+
+						Wrapper.getPlayer().motionX = -Math.sin(direction) * speed * currentSpeed;
+						Wrapper.getPlayer().motionZ = Math.cos(direction) * speed * currentSpeed;
+					}
+				} else if (mc.gameSettings.keyBindBack.isKeyDown() || mc.gameSettings.keyBindLeft.isKeyDown()
+						|| mc.gameSettings.keyBindRight.isKeyDown()) {
+					if (Wrapper.getPlayer().onGround) {
+						Wrapper.getPlayer().jump();
+						Wrapper.getPlayer().motionY = 0.405;
+						float f = PlayerControllerUtils.getDirection();
+						Wrapper.getPlayer().motionX -= (double) (MathHelper.sin(f) * SPEED.getValueF());
+						Wrapper.getPlayer().motionZ += (double) (MathHelper.cos(f) * SPEED.getValueF());
+					} else {
+						double currentSpeed = Math.sqrt(Wrapper.getPlayer().motionX * Wrapper.getPlayer().motionX
+								+ Wrapper.getPlayer().motionZ * Wrapper.getPlayer().motionZ);
+						double speed = boost ? 1.0064 : 1.001;
+
+						double direction = PlayerControllerUtils.getDirection();
+
+						Wrapper.getPlayer().motionX = -Math.sin(direction) * speed * currentSpeed;
+						Wrapper.getPlayer().motionZ = Math.cos(direction) * speed * currentSpeed;
+
+					}
+				}
+			
 		}
 	}
 
 	private enum Mode {
-		NORMAL, M1,Timer,Hypixel
+		NORMAL, M1,Timer,Hypixel,AAC
 	}
 	
 	private void setTickLength(float tickLength)

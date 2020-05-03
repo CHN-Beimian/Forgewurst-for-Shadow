@@ -33,14 +33,14 @@ public class RegenHack extends Hack{
 		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 	@SubscribeEvent
-	public void onUpdate(TickEvent.PlayerTickEvent event) {
+	public void onUpdate(WUpdateEvent event) {
 		if(mc.player==null)
 			return;
 		if (mc.player.getHealth() < health.getValue() * 2 && mc.player.getFoodStats().getFoodLevel() > 16 && !mc.gameSettings.keyBindUseItem.isPressed()&& mc.player.collidedVertically &&
                 mc.player.onGround && !mc.gameSettings.keyBindJump.isPressed() && (!mc.player.isInsideOfMaterial(Material.LAVA)) &&
                 !mc.player.isInWater()) {
             for (int i = 0; i < 40; i++) {
-                FMLClientHandler.instance().getClientPlayerEntity().connection.sendPacket(new CPacketPlayer());
+            	mc.player.connection.sendPacket(new CPacketPlayer());
             }
         }
 	}

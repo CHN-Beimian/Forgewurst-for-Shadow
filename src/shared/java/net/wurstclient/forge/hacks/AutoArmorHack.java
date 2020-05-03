@@ -92,7 +92,7 @@ public final class AutoArmorHack extends Hack
 			timer--;
 			return;
 		}
-		
+	
 		// check screen
 		if(mc.currentScreen instanceof GuiContainer
 			&& !(mc.currentScreen instanceof InventoryEffectRenderer))

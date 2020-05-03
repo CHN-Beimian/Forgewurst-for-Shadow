@@ -12,6 +12,7 @@ import net.wurstclient.forge.Hack;
 
 public final class TCmd extends Command
 {
+	
 	public TCmd()
 	{
 		super("t", "Toggles a hack.", "Syntax: .t <hack> [on|off]");

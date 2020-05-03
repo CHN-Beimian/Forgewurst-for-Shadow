@@ -1,47 +1,48 @@
-/*
- * Copyright (C) 2017 - 2019 | Wurst-Imperium | All rights reserved.
- *
- * This source code is subject to the terms of the GNU General Public
- * License, version 3. If a copy of the GPL was not distributed with this
- * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
- */
-package net.wurstclient.forge;
+package net.wurstclient.forge.hacks;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.Text;
-import net.minecraftforge.fml.client.FMLClientHandler;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.wurstclient.forge.Category;
+import net.wurstclient.forge.Hack;
+import net.wurstclient.forge.HackList;
 import net.wurstclient.forge.clickgui.ClickGui;
 import net.wurstclient.forge.clickgui.ClickGuiScreen;
 import net.wurstclient.forge.compatibility.WMinecraft;
 import net.wurstclient.forge.utils.management.FontManager;
 
-public final class IngameHUD {
+public class HUD extends Hack{
 	public static FontManager fm = new FontManager();
 	private final Minecraft mc = Minecraft.getMinecraft();
 	private final HackList hackList;
 	private final ClickGui clickGui;
 	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-
-	public IngameHUD(HackList hackList, ClickGui clickGui) {
+	public HUD(HackList hackList, ClickGui clickGui) {
+		super("HUD","hud");
+		setCategory(Category.RENDER);
 		this.hackList = hackList;
 		this.clickGui = clickGui;
 	}
 
+	@Override
+	protected void onEnable() {
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	@Override
+	protected void onDisable() {
+		MinecraftForge.EVENT_BUS.unregister(this);
+	}
 	@SubscribeEvent
 	public void onRenderGUI(RenderGameOverlayEvent.Post event) {
 		if (event.getType() != ElementType.ALL || mc.gameSettings.showDebugInfo)
@@ -132,3 +133,4 @@ public final class IngameHUD {
 		GL11.glPopMatrix();
 	}
 }
+
