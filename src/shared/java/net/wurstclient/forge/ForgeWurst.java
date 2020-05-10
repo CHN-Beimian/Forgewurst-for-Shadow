@@ -65,24 +65,24 @@ public final class ForgeWurst
 	
 	
 	@Instance(MODID)
-	private static ForgeWurst forgeWurst;
-	private boolean enabled = true;
-	private boolean obfuscated;
+	public static ForgeWurst forgeWurst;
+	public boolean enabled = true;
+	public boolean obfuscated;
 	
-	private Path configFolder;
+	public Path configFolder;
 	
-	private HackList hax;
-	private CommandList cmds;
-	private KeybindList keybinds;
-	private ClickGui gui;
-	private GoogleAnalytics analytics;
-	private Friends friends;
+	public HackList hax;
+	public CommandList cmds;
+	public KeybindList keybinds;
+	public ClickGui gui;
+	public GoogleAnalytics analytics;
+	public Friends friends;
 
 
-	private IngameHUD hud;
-	private CommandProcessor cmdProcessor;
-	private KeybindProcessor keybindProcessor;
-	private WurstUpdater updater;
+	public IngameHUD hud;
+	public CommandProcessor cmdProcessor;
+	public KeybindProcessor keybindProcessor;
+	public WurstUpdater updater;
 	
 	public  ForgeWurst() {
 		forgeWurst=this;

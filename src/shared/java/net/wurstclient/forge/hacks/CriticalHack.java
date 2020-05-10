@@ -110,7 +110,7 @@ public class CriticalHack extends Hack {
 			return;
 			/* mc.player.onCriticalHit(wurst.getHax().killauraHack.gettarget()); */
 			if (mc.objectMouseOver.entityHit == null && wurst.getHax().killauraHack.gettarget() == null
-			&& wurst.getHax().tpAura.gettarget() == null&&wurst.getHax().killauraSigmaHack.gettarget()==null) 
+			&& wurst.getHax().tpAura.gettarget() == null) 
 		return;
 	
 
@@ -212,7 +212,7 @@ public class CriticalHack extends Hack {
 	private void doTestJump() {
 
 		if (mc.objectMouseOver.entityHit == null && wurst.getHax().killauraHack.gettarget() == null
-				&& wurst.getHax().tpAura.gettarget() == null&&wurst.getHax().killauraSigmaHack.gettarget()==null) {
+				&& wurst.getHax().tpAura.gettarget() == null) {
 			return;
 		}
 

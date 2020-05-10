@@ -32,7 +32,7 @@ public final class HackList extends WHackList {
 	public final PVPHack pvpHack=register(new PVPHack());
 	public final TestHack testHack=register(new TestHack());
 	public final AntiBotHack antiBotHack=register(new AntiBotHack());
-	public final KillAuraSigmaHack killauraSigmaHack=register(new KillAuraSigmaHack());
+	public final AimBotHack aimBotHack=register(new AimBotHack());
 	private final AutoSayHack autoSayHack=register(new AutoSayHack());
 	private final KickPlayerHack kickPlayerHack=register(new KickPlayerHack());
 	private final BedFuckerHack bedFuckerHack=register(new BedFuckerHack());

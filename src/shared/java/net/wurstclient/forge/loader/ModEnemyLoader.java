@@ -13,7 +13,7 @@ public class ModEnemyLoader {
 	   private static volatile ModEnemyLoader instance;
 
 	   public ModEnemyLoader() {
-	      enemyFile = new File(FMLClientHandler.instance().getClient().mcDataDir, "Sanction/EnemyList.txt");
+	      enemyFile = new File(FMLClientHandler.instance().getClient().mcDataDir, "Shadow/EnemyList.txt");
 	      enemyList.add("huang_bai");
 	      enemyList.add("Yellow_White");
 	      if(!enemyFile.exists()) {

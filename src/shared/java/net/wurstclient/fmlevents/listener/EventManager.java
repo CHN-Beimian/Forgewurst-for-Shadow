@@ -8,6 +8,7 @@ import java.util.Objects;
 import net.wurstclient.forge.ForgeWurst;
 
 public final class EventManager {
+	
 	private final ForgeWurst wurst;
 	private final HashMap<Class<? extends Listener>, ArrayList<? extends Listener>> listenerMap = new HashMap<>();
 

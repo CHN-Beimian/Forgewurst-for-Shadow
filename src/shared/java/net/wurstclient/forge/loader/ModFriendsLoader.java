@@ -13,7 +13,7 @@ public class ModFriendsLoader {
 	   private static volatile ModFriendsLoader instance;
 
 	   public ModFriendsLoader() {
-	      friendsFile = new File(FMLClientHandler.instance().getClient().mcDataDir, "Sanction/FriendsList.txt");
+	      friendsFile = new File(FMLClientHandler.instance().getClient().mcDataDir, "Shadow/FriendsList.txt");
 	      friendList.add("huang_bai");
 	      friendList.add("Yellow_White");
 	      if(!friendsFile.exists()) {

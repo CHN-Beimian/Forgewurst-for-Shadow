@@ -23,7 +23,7 @@ public class ModNoticeLoader {
     }
     public void init()throws IOException{
         saveDefaultConfig();
-        File file = new File("Sanction/notice.txt");
+        File file = new File("Shadow/notice.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String str;
         while((str = br.readLine())!=null){
@@ -32,12 +32,12 @@ public class ModNoticeLoader {
         br.close();
     }
     public void saveDefaultConfig()throws IOException{
-        File file = new File("Sanction/notice.txt");
+        File file = new File("Shadow/notice.txt");
         if(file.exists())return;
         file.createNewFile();
         OutputStream os = new FileOutputStream(file);
         BufferedOutputStream bos = new BufferedOutputStream(os);
-        InputStream is = ModMessageLoader.class.getResourceAsStream("Sanction/notice.txt");
+        InputStream is = ModMessageLoader.class.getResourceAsStream("Shadow/notice.txt");
         BufferedInputStream bis = new BufferedInputStream(is);
         byte[] b = new byte[1024];
         int len;

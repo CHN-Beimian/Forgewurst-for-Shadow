@@ -6,6 +6,9 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class HotHackKey {
+	private static  HotHackKey hotkey;
+	
+	
 	public static KeyBinding fly;
 
 	public HotHackKey() {
@@ -14,5 +17,9 @@ public class HotHackKey {
 		
 		ClientRegistry.registerKeyBinding(fly);
 	}
-
+	public static HotHackKey instance() {
+		return hotkey;
+	}
+	
+	
 }
