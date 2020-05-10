@@ -197,7 +197,8 @@ public class AimBotHack extends Hack{
 		}
 
 		target = stream.min(priority.getSelected().comparator).orElse(null);
-		
+		if(target==null)
+			return;
 		RotationUtils.faceVectorC(target.getEntityBoundingBox().getCenter());
 
 	}

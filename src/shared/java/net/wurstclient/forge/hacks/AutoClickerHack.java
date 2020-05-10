@@ -133,9 +133,10 @@ public class AutoClickerHack extends Hack {
 			if (Wrapper.getPlayer() != null) {
 
 				if (this.timer.hasReached(1000.0 / this.cps.getValue() - random.nextInt(4))) {
-					Wrapper.getPlayer().swingArm(EnumHand.MAIN_HAND);
+					
 					if (Wrapper.getMinecraft().objectMouseOver != null
 							&& Wrapper.getMinecraft().objectMouseOver.entityHit != null) {
+						Wrapper.getPlayer().swingArm(EnumHand.MAIN_HAND);
 						mc.playerController.attackEntity(player, Wrapper.getMinecraft().objectMouseOver.entityHit);
 						
 					}
