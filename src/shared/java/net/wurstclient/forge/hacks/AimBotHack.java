@@ -22,6 +22,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.wurstclient.fmlevents.WUpdateEvent;
 import net.wurstclient.forge.Category;
 import net.wurstclient.forge.Hack;
 import net.wurstclient.forge.compatibility.WEntity;
@@ -44,16 +45,9 @@ public class AimBotHack extends Hack{
 	long lastLog = System.currentTimeMillis();
 	public boolean isBlock;
 	public boolean isDamage;
-	private final CheckboxSetting autoBlock = new CheckboxSetting("AutoBlock", true);
-	public final CheckboxSetting onlyPlayer = new CheckboxSetting("OnlyPlyaer", "Only attack players", true);
-	public final EnumSetting<ModeRotate> moder = new EnumSetting<KillauraHack.ModeRotate>("ModeRotate",
-			ModeRotate.values(), ModeRotate.C);
-	public final CheckboxSetting clientRotate = new CheckboxSetting("ClientRotate", "Turn your head that you can see",
-			false);
+
 	private int time;
-	private final CheckboxSetting useCooldown = new CheckboxSetting("Use cooldown",
-			"Use your weapon's cooldown as the attack speed.\n" + "When checked, the 'Speed' slider will be ignored.",
-			true);
+
 	
 
 
@@ -109,6 +103,21 @@ public class AimBotHack extends Hack{
 	public AimBotHack() {
 		super("AimBot","auto aim");
 		setCategory(Category.COMBAT);
+		addSetting(range);
+		addSetting(priority);
+		addSetting(filterPlayers);
+		addSetting(filterSleeping);
+		addSetting(filterFlying);
+		addSetting(filterMonsters);
+		addSetting(filterPigmen);
+		addSetting(filterEndermen);
+		addSetting(filterAnimals);
+		addSetting(filterBabies);
+		addSetting(filterPets);
+		addSetting(filterVillagers);
+		addSetting(filterGolems);
+		addSetting(filterInvisible);
+
 	}
 	
 	@Override
@@ -120,7 +129,7 @@ public class AimBotHack extends Hack{
 		MinecraftForge.EVENT_BUS.unregister(this);
 	}
 	@SubscribeEvent
-	public void onUpdate() {
+	public void onUpdate(WUpdateEvent event) {
 		double rangeSq = Math.pow(range.getValue(), 2);
 		World world=mc.player.world;
 		EntityPlayerSP player=mc.player;
