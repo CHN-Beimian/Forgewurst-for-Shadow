@@ -35,6 +35,8 @@ import net.wurstclient.forge.utils.JsonUtils;
 
 public final class ClickGui
 {
+	public static ClickGui clickgui;
+	
 	private final ArrayList<Window> windows = new ArrayList<>();
 	private final ArrayList<Popup> popups = new ArrayList<>();
 	private final Path windowsFile;
@@ -1057,5 +1059,10 @@ public final class ClickGui
 	public void addPopup(Popup popup)
 	{
 		popups.add(popup);
+	}
+	
+	
+	public static ClickGui instance() {
+		return clickgui;
 	}
 }

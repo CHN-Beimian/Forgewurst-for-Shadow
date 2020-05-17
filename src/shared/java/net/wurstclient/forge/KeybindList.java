@@ -27,6 +27,8 @@ import net.wurstclient.forge.utils.JsonUtils;
 
 public final class KeybindList
 {
+	public static KeybindList keybindList;
+	
 	private final Path path;
 	private final ArrayList<Keybind> keybinds = new ArrayList<>();
 	
@@ -176,5 +178,8 @@ public final class KeybindList
 		{
 			return commands;
 		}
+	}
+	public static KeybindList instance() {
+		return keybindList;
 	}
 }

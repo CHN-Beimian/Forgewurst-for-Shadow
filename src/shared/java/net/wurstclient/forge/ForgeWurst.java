@@ -52,11 +52,12 @@ import net.wurstclient.forge.loader.ModMessageLoader;
 import net.wurstclient.forge.loader.ModNoticeLoader;
 import net.wurstclient.forge.update.WurstUpdater;
 import net.wurstclient.forge.utils.management.FontManager;
+import net.wurstclient.hothack.loader.EventLoader;
 
 @Mod(modid = ForgeWurst.MODID,
 	version = ForgeWurst.VERSION,
 	updateJSON = "https://afdian.net/@beimian")
-public final class ForgeWurst
+public  class ForgeWurst
 {
 	public static final String MODID = "hurricane";
 	public static final String VERSION = "1.1.0";
@@ -66,6 +67,7 @@ public final class ForgeWurst
 	
 	@Instance(MODID)
 	public static ForgeWurst forgeWurst;
+
 	public boolean enabled = true;
 	public boolean obfuscated;
 	
@@ -84,26 +86,7 @@ public final class ForgeWurst
 	public KeybindProcessor keybindProcessor;
 	public WurstUpdater updater;
 	
-	public  ForgeWurst() {
-		forgeWurst=this;
-		MinecraftForge.EVENT_BUS.register(this);
-		forgeWurst.getHax();
-		forgeWurst.getHax();
-		forgeWurst.getCmds();
-		forgeWurst.getGui();
-		forgeWurst.getHud();
-		forgeWurst.getCmds();
-		forgeWurst.getKeybinds();
-		forgeWurst.getWurstFolder();
-		
-		
-	}
-	public static void inject()
-	  {
-	    if (getForgeWurst() == null) {
-	      forgeWurst = new ForgeWurst();
-	    }
-	  }
+
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
@@ -111,7 +94,7 @@ public final class ForgeWurst
 		log.info("Starting Shadow " + ForgeWurst.VERSION); //启动信息
         log.info("Copyright (c) Zenwix, 2020-2021");
 		/* FontManager fm= new FontManager(); */
-        Display.setTitle("Forgewurst For Shadow");
+       
         
         new ModNoticeLoader();
         new ModEnemyLoader();
@@ -174,7 +157,6 @@ public final class ForgeWurst
 		analytics.trackPageView("/mc" + WMinecraft.VERSION + "/v" + VERSION,
 			"Hurricane " + VERSION + " MC" + WMinecraft.VERSION);
 	}
-	
 	public static ForgeWurst getForgeWurst()
 	{
 		return forgeWurst;

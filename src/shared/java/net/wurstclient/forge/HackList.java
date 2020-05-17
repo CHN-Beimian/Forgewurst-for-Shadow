@@ -22,6 +22,7 @@ import net.wurstclient.forge.settings.Setting;
 import net.wurstclient.forge.utils.JsonUtils;
 
 public final class HackList extends WHackList {
+	public static HackList hacklist;
 	//
 	
 	public final InformationHUD informationHUD=register(new InformationHUD());
@@ -240,6 +241,9 @@ public final class HackList extends WHackList {
 			System.out.println("Failed to save " + settingsFile.getFileName());
 			e.printStackTrace();
 		}
+	}
+	public static HackList instance() {
+		return hacklist;
 	}
 	
 }
