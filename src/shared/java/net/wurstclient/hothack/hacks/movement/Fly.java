@@ -18,7 +18,8 @@ public class Fly extends Hack {
 	int ticks = 0;
 	public Fly()
 	  {
-	    setKeyBored(19);
+		super("Fly","fly");
+	
 	    setKey(new KeyBinding("Shadow.flight", Keyboard.KEY_0, "Shadow"));
 	  }
 	  

@@ -53,8 +53,9 @@ public Path configFolder;
 		 * KeybindProcessor keybindProcessor = new KeybindProcessor(hax, keybinds,
 		 * cmdProcessor); MinecraftForge.EVENT_BUS.register(keybindProcessor);
 		 */
-		 HackLoader.instance();
-		 new HackKeyLoader();
+		
+		
+		HackLoader.instance();
 		FMLCommonHandler.instance().bus().register(new EventLoader());
 		MinecraftForge.EVENT_BUS.register(new EventLoader());
 		

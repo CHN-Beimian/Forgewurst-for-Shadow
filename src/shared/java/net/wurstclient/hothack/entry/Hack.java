@@ -3,19 +3,31 @@ package net.wurstclient.hothack.entry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.wurstclient.forge.ForgeWurst;
+import net.wurstclient.forge.utils.ChatUtils;
+
 
 public abstract class Hack {
+	private static Configuration configuration;
 	protected int keybored;
 	protected KeyBinding key;
 	protected boolean enable;
 	public static Minecraft mc=Minecraft.getMinecraft();
 	public static EntityPlayerSP player=mc.player;
+	public  final String name;
+	public  final String desc;
 	
-	
-	public Hack() {
-		
+	public Hack(String name,String desc) {
+		this.name=name;
+		this.desc=desc;
 	}
+	public String getName()
+	  {
+	    return this.name;
+	  }
 	public void setKeyBored(int keyBinding) {
 		this.keybored=keyBinding;
 	}
@@ -57,18 +69,20 @@ public abstract class Hack {
 		this.enable=false;
 		onDisable();
 	}
-	
+
 	 public void toggle()
 	  {
 	    this.enable = (!this.enable);
 	    if (isEnable())
 	    {
 	      onEnable();
+	      ChatUtils.message("\u00a7l"+getName()+"  has been enabled");
 	      HackEntry.instance.addActive(this);
 	    }
 	    else
 	    {
 	      onDisable();
+	      ChatUtils.message("\u00a7l"+getName()+"  has been disabled");
 	      HackEntry.instance.removeActive(this);
 	    }
 	  }

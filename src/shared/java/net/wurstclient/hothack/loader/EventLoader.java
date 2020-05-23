@@ -15,11 +15,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.Text;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
+import net.wurstclient.fmlevents.WUpdateEvent;
+import net.wurstclient.forge.compatibility.WMinecraft;
+import net.wurstclient.forge.compatibility.WPlayer;
 import net.wurstclient.hothack.entry.Hack;
 import net.wurstclient.hothack.entry.HackEntry;
 import net.wurstclient.hothack.hacks.movement.Fly;
@@ -39,6 +44,9 @@ public class EventLoader {
 	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 	private boolean[] keyStates = new boolean['?'];
 
+	
+
+	
 	@SubscribeEvent
 	public void onTick(TickEvent.ServerTickEvent event) {
 		Iterator var3 = HackEntry.instance.hacks.iterator();
