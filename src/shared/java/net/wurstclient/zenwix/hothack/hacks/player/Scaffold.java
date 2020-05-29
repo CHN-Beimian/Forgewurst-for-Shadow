@@ -1,76 +1,45 @@
-package net.wurstclient.forge.hacks;
+package net.wurstclient.zenwix.hothack.hacks.player;
 
 import java.lang.reflect.Field;
 
-import com.google.common.eventbus.Subscribe;
+import org.lwjgl.input.Keyboard;
 
-import io.netty.handler.codec.http2.Http2FrameLogger.Direction;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFalling;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.wurstclient.fmlevents.WUpdateEvent;
-import net.wurstclient.forge.Category;
-import net.wurstclient.forge.Hack;
-import net.wurstclient.forge.settings.EnumSetting;
-import net.wurstclient.forge.settings.SliderSetting;
-import net.wurstclient.forge.settings.SliderSetting.ValueDisplay;
 import net.wurstclient.forge.utils.BlockInteractionHelper;
-import net.wurstclient.forge.utils.BlockUtils;
 import net.wurstclient.forge.utils.EntityUtils;
 import net.wurstclient.forge.utils.Wrapper;
+import net.wurstclient.zenwix.hothack.entry.Hack;
 
-public class ScaffoldHack extends Hack {
-	private final EnumSetting<Mode> mode=new EnumSetting<ScaffoldHack.Mode>("Mode", Mode.values(), Mode.Wurst);
-	BlockInteractionHelper blockhelper = new BlockInteractionHelper();
-	private final SliderSetting future = new SliderSetting("future", 2, 0, 60, 2, ValueDisplay.DECIMAL);
-
-	public ScaffoldHack() {
-		super("Scaffold", "Automatically place blocks under your feet");
+public class Scaffold extends Hack {
 	
-		setCategory(Category.PLAYER);
-		addSetting(future);
-		addSetting(mode);
+	BlockInteractionHelper blockhelper = new BlockInteractionHelper();
+	public Scaffold() {
+		super("Scaffold", "Automatically place blocks under your feet");
+		setKey(new KeyBinding("Shadow.Scaffold", Keyboard.KEY_M, "Shadow"));
 	}
 
 	@Override
-	protected void onEnable() {
-
-		MinecraftForge.EVENT_BUS.register(this);
-	}
-
-	@Override
-	protected void onDisable() {
-		MinecraftForge.EVENT_BUS.unregister(this);
-	}
-
-	@SubscribeEvent
-	public void onUpdate(WUpdateEvent event) {
-		if(mode.getSelected()==Mode.M1) {
-		try
-		{
-			Field rightClickDelayTimer =
-				mc.getClass().getDeclaredField(wurst.isObfuscated()
-					? "field_71467_ac" : "rightClickDelayTimer");
+	public void onTicks() {
+		try {
+			Field rightClickDelayTimer = mc.getClass().getDeclaredField("field_71467_ac");
 			rightClickDelayTimer.setAccessible(true);
 			rightClickDelayTimer.setInt(mc, 0);
-			
-		}catch(ReflectiveOperationException e)
-		{
-			setEnabled(false);
+
+		} catch (ReflectiveOperationException e) {
+			off();
 			throw new RuntimeException(e);
 		}
 		if (mc.player == null)
 			return;
-		Vec3d vec3d = EntityUtils.getInterpolatedPos(mc.player, future.getValueF());
+		Vec3d vec3d = EntityUtils.getInterpolatedPos(mc.player, 0);
 		BlockPos blockPos = new BlockPos(vec3d).down();
 		BlockPos belowBlockPos = blockPos.down();
 
@@ -124,21 +93,14 @@ public class ScaffoldHack extends Hack {
 
 		// reset slot
 		Wrapper.getPlayer().inventory.currentItem = oldSlot;
-		if(mc.player.onGround) {
-		if(mc.gameSettings.keyBindSneak.isKeyDown()) {
-			Vec3d vec=new Vec3d(0, 1, 0);
-			BlockPos blp=new BlockPos(mc.player.posX, mc.player.posY-1, mc.player.posZ);
-			blockhelper.placeBlockScaffold(blp);
-			mc.player.swingArm(EnumHand.MAIN_HAND);
+		if (mc.player.onGround) {
+			if (mc.gameSettings.keyBindSneak.isKeyDown()) {
+				Vec3d vec = new Vec3d(0, 1, 0);
+				BlockPos blp = new BlockPos(mc.player.posX, mc.player.posY - 1, mc.player.posZ);
+				blockhelper.placeBlockScaffold(blp);
+				mc.player.swingArm(EnumHand.MAIN_HAND);
+			}
 		}
-		}
-		}else if(mode.getSelected()==Mode.Wurst) {
-			
-		
-		}
+
 	}
-	private enum Mode{
-		M1,Wurst
-	}
-	
 }

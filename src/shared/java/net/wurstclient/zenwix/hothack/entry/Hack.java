@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.entry;
+package net.wurstclient.zenwix.hothack.entry;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;

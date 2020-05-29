@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.loader;
+package net.wurstclient.zenwix.hothack.loader;
 
 import net.minecraft.block.Block;
 import java.text.SimpleDateFormat;
@@ -25,9 +25,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.wurstclient.fmlevents.WUpdateEvent;
 import net.wurstclient.forge.compatibility.WMinecraft;
 import net.wurstclient.forge.compatibility.WPlayer;
-import net.wurstclient.hothack.entry.Hack;
-import net.wurstclient.hothack.entry.HackEntry;
-import net.wurstclient.hothack.hacks.movement.Fly;
+import net.wurstclient.zenwix.hothack.entry.Hack;
+import net.wurstclient.zenwix.hothack.entry.HackEntry;
+import net.wurstclient.zenwix.hothack.hacks.movement.Fly;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;

@@ -2,9 +2,9 @@ package net.wurstclient.forge;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.wurstclient.hothack.loader.EventLoader;
-import net.wurstclient.hothack.loader.HackKeyLoader;
-import net.wurstclient.hothack.loader.HackLoader;
+import net.wurstclient.zenwix.hothack.loader.EventLoader;
+import net.wurstclient.zenwix.hothack.loader.HackKeyLoader;
+import net.wurstclient.zenwix.hothack.loader.HackLoader;
 
 public class IJHotHack {
 	public static IJHotHack hothack;

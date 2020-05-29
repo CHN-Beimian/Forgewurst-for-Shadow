@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.hacks.games;
+package net.wurstclient.zenwix.hothack.hacks.games;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.wurstclient.forge.utils.STimer;
-import net.wurstclient.hothack.entry.Hack;
+import net.wurstclient.zenwix.hothack.entry.Hack;
 
 public class BedFucker extends Hack{
 	

@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.entry;
+package net.wurstclient.zenwix.hothack.entry;
 
 import java.util.ArrayList;
 import java.util.Iterator;

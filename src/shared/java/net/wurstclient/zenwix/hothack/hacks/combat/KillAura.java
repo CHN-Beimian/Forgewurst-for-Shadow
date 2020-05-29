@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.hacks.combat;
+package net.wurstclient.zenwix.hothack.hacks.combat;
 
 import java.util.Comparator;
 import java.util.function.ToDoubleFunction;
@@ -35,11 +35,13 @@ import net.wurstclient.forge.utils.RenderUtils;
 import net.wurstclient.forge.utils.RotationUtils;
 import net.wurstclient.forge.utils.STimer;
 import net.wurstclient.forge.utils.Wrapper;
-import net.wurstclient.hothack.entry.Hack;
+import net.wurstclient.zenwix.hothack.entry.Hack;
 
 public class KillAura extends Hack{
 	public EntityLivingBase target;
 	
+	public static int CPS=10;
+	public static double reach=3.85;
 	private final STimer timer = new STimer();
 	private final STimer cps = new STimer();
 	
@@ -54,9 +56,9 @@ public class KillAura extends Hack{
 	public void onUpdate() {
 		 EntityPlayerSP player = mc.player;
 		 World world=mc.world;
-			double rangeSq = Math.pow(4, 2);
+			double rangeSq = Math.pow(reach, 2);
 			double hypixelTimer = 0.1 * 1000;
-			int delayValue = (20 / 4) * 50;
+			int delayValue = (20 / CPS) * 50;
 			
 			
 			if (player.getCooledAttackStrength(0) < 1)
@@ -140,7 +142,7 @@ public class KillAura extends Hack{
 	
 	public void MatchTarget() {
 		World world=mc.world;
-		double rangeSq = Math.pow(4, 2);
+		double rangeSq = Math.pow(reach, 2);
 		
 		
 		Stream<EntityLivingBase> stream = world.loadedEntityList.parallelStream()

@@ -1,4 +1,4 @@
-package net.wurstclient.hothack;
+package net.wurstclient.zenwix.hothack;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,9 +15,9 @@ import net.wurstclient.forge.IngameHUD;
 import net.wurstclient.forge.KeybindList;
 import net.wurstclient.forge.KeybindProcessor;
 import net.wurstclient.forge.clickgui.ClickGui;
-import net.wurstclient.hothack.loader.EventLoader;
-import net.wurstclient.hothack.loader.HackKeyLoader;
-import net.wurstclient.hothack.loader.HackLoader;
+import net.wurstclient.zenwix.hothack.loader.EventLoader;
+import net.wurstclient.zenwix.hothack.loader.HackKeyLoader;
+import net.wurstclient.zenwix.hothack.loader.HackLoader;
 
 public class IJHack {
 public static IJHack ij;

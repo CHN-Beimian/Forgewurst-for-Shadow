@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.hacks.movement;
+package net.wurstclient.zenwix.hothack.hacks.movement;
 
 import java.lang.reflect.Field;
 
@@ -12,7 +12,7 @@ import net.wurstclient.forge.utils.MoveUtils;
 import net.wurstclient.forge.utils.PlayerControllerUtils;
 import net.wurstclient.forge.utils.STimer;
 import net.wurstclient.forge.utils.Wrapper;
-import net.wurstclient.hothack.entry.Hack;
+import net.wurstclient.zenwix.hothack.entry.Hack;
 
 public class Speed extends Hack{
 	 public boolean shouldslow = false;

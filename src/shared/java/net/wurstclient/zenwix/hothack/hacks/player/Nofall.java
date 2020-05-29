@@ -1,10 +1,10 @@
-package net.wurstclient.hothack.hacks.player;
+package net.wurstclient.zenwix.hothack.hacks.player;
 
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.network.play.client.CPacketPlayer;
-import net.wurstclient.hothack.entry.Hack;
+import net.wurstclient.zenwix.hothack.entry.Hack;
 
 public class Nofall extends Hack{
 	public Nofall() {

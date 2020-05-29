@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.hacks.movement;
+package net.wurstclient.zenwix.hothack.hacks.movement;
 
 import java.lang.reflect.Field;
 
@@ -10,7 +10,7 @@ import net.minecraft.util.Timer;
 import net.minecraftforge.common.MinecraftForge;
 import net.wurstclient.forge.compatibility.WMinecraft;
 import net.wurstclient.forge.utils.Wrapper;
-import net.wurstclient.hothack.entry.Hack;
+import net.wurstclient.zenwix.hothack.entry.Hack;
 
 public class Fly extends Hack {
 	

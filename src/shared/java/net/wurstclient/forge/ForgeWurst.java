@@ -52,7 +52,7 @@ import net.wurstclient.forge.loader.ModMessageLoader;
 import net.wurstclient.forge.loader.ModNoticeLoader;
 import net.wurstclient.forge.update.WurstUpdater;
 import net.wurstclient.forge.utils.management.FontManager;
-import net.wurstclient.hothack.loader.EventLoader;
+import net.wurstclient.zenwix.hothack.loader.EventLoader;
 
 @Mod(modid = ForgeWurst.MODID,
 	version = ForgeWurst.VERSION,

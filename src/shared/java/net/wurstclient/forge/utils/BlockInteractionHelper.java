@@ -21,7 +21,7 @@ public class BlockInteractionHelper {
 
 	public static final List<Block> blackList = Arrays.asList(Blocks.ENDER_CHEST, Blocks.CHEST, Blocks.TRAPPED_CHEST,
 			Blocks.CRAFTING_TABLE, Blocks.ANVIL, Blocks.BREWING_STAND, Blocks.HOPPER, Blocks.DROPPER, Blocks.DISPENSER,
-			Blocks.TRAPDOOR, Blocks.ENCHANTING_TABLE);
+			Blocks.TRAPDOOR, Blocks.ENCHANTING_TABLE,Blocks.TNT);
 
 	public static final List<Block> shulkerList = Arrays.asList(Blocks.WHITE_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX,
 			Blocks.MAGENTA_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX,

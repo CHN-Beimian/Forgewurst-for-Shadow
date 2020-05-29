@@ -1,4 +1,4 @@
-package net.wurstclient.hothack.loader;
+package net.wurstclient.zenwix.hothack.loader;
 
 import org.lwjgl.input.Keyboard;
 
