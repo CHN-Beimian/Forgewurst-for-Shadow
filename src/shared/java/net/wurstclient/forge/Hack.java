@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.minecraft.client.Minecraft;
-import net.wurstclient.fmlevents.sigmaevent.Event;
+
 import net.wurstclient.forge.compatibility.WForgeRegistryEntry;
 import net.wurstclient.forge.settings.Setting;
 

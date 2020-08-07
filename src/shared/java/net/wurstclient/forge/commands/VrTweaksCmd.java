@@ -8,7 +8,7 @@
 package net.wurstclient.forge.commands;
 
 import net.wurstclient.forge.Command;
-import net.wurstclient.forge.hacks.ClickGuiHack;
+import net.wurstclient.forge.hacks.misc.ClickGuiHack;
 import net.wurstclient.forge.utils.ChatUtils;
 
 public final class VrTweaksCmd extends Command

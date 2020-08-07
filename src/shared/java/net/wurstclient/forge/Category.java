@@ -7,26 +7,19 @@
  */
 package net.wurstclient.forge;
 
-public enum Category
-{
-	BLOCKS("Blocks"),
-	MOVEMENT("Movement"),
-	COMBAT("Combat"),
-	RENDER("Render"),
-	CHAT("Chat"),
-	FUN("Fun"),
-	PLAYER("Player"),
-	OTHER("Other");
-	
+public enum Category {
+
+	MOVEMENT("Movement"), COMBAT("Combat"), RENDER("Render"), MISC("Misc"),
+
+	PLAYER("Player");
+
 	private final String name;
-	
-	private Category(String name)
-	{
+
+	private Category(String name) {
 		this.name = name;
 	}
-	
-	public String getName()
-	{
+
+	public String getName() {
 		return name;
 	}
 }

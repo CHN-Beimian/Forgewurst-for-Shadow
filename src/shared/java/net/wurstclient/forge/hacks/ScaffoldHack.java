@@ -124,8 +124,18 @@ public class ScaffoldHack extends Hack {
 
 		// reset slot
 		Wrapper.getPlayer().inventory.currentItem = oldSlot;
+		if(mc.gameSettings.keyBindJump.isKeyDown()) {
+			mc.player.motionY=0.37;
+		}
+		
 		if(mc.player.onGround) {
+			if(mc.gameSettings.keyBindJump.isKeyDown()) {
+				mc.player.motionY=0.4;
+			}
+			
 		if(mc.gameSettings.keyBindSneak.isKeyDown()) {
+			
+			
 			Vec3d vec=new Vec3d(0, 1, 0);
 			BlockPos blp=new BlockPos(mc.player.posX, mc.player.posY-1, mc.player.posZ);
 			blockhelper.placeBlockScaffold(blp);

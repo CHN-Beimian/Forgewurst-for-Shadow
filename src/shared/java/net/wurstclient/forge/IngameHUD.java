@@ -16,6 +16,7 @@ import java.util.Date;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
@@ -31,7 +32,9 @@ import net.wurstclient.forge.compatibility.WMinecraft;
 import net.wurstclient.forge.utils.management.FontManager;
 
 public final class IngameHUD {
+	private final ResourceLocation logo =new ResourceLocation(ForgeWurst.MODID, "shadow.png");
 	public static FontManager fm = new FontManager();
+	FontRenderer font = WMinecraft.getFontRenderer();
 	private final Minecraft mc = Minecraft.getMinecraft();
 	private final HackList hackList;
 	private final ClickGui clickGui;
@@ -44,6 +47,8 @@ public final class IngameHUD {
 
 	@SubscribeEvent
 	public void onRenderGUI(RenderGameOverlayEvent.Post event) {
+		
+		ScaledResolution sr = new ScaledResolution(mc);
 		if (event.getType() != ElementType.ALL || mc.gameSettings.showDebugInfo)
 			return;
 
@@ -84,15 +89,15 @@ public final class IngameHUD {
 		 * GL11.glPopMatrix();
 		 */
 		// hack list
-		int y = 24;
+		int y = 2;
 		ArrayList<Hack> hacks = new ArrayList<>();
 		hacks.addAll(hackList.getValues());
-		hacks.sort(Comparator.comparing(Hack::getName));
-
+		//hacks.sort(Comparator.comparing(Hack::getName));
+		hacks.sort((h1, h2) -> font.getStringWidth(h2.getRenderName()) - font.getStringWidth(h1.getRenderName()));
 		for (Hack hack : hacks) {
 			if (!hack.isEnabled())
 				continue;
-			WMinecraft.getFontRenderer().drawStringWithShadow("\u00a7l"+hack.getRenderName(), 2, y, textColor);
+			WMinecraft.getFontRenderer().drawStringWithShadow("\u00a7l"+hack.getRenderName(), sr.getScaledWidth() - font.getStringWidth("\u00a7l"+hack.getRenderName()), y, textColor);
 			
 						/*
 			 * fm.getFont("SFB 7").drawStringWithShadow(hack.getRenderName(), 2, y,
@@ -112,7 +117,7 @@ public final class IngameHUD {
 	}
 
 	@SubscribeEvent
-	public void onRenderTitle(Text event) {
+	public void onRenderTitle(RenderGameOverlayEvent.Text event) {
 		/*
 		 * if (event.getType() != ElementType.ALL || mc.gameSettings.showDebugInfo)
 		 * return;
@@ -120,15 +125,20 @@ public final class IngameHUD {
 		if(mc.player.world==null)
 			return;
 		GL11.glPushMatrix();
-		final Color color = Color.getHSBColor(255.0f, 0.6f, 1.0f);
-		final Color color1 = Color.ORANGE;
-		final int c1=color1.getRGB();
-		final int c = color.getRGB();
-		int renderColor = 0;
-		renderColor = c;
-		fm.getFont("JIGR 11").drawStringWithShadow("Shadow", 1, 1, c);
 		
+		  final Color color = Color.getHSBColor(255.0f, 0.6f, 1.0f); final Color color1
+		  = Color.ORANGE; final int c1=color1.getRGB(); final int c = color.getRGB();
+		  int renderColor = 0; renderColor = c;
+		  fm.getFont("JIGR 11").drawStringWithShadow("Shadow", 1, 1, c);
+		 
 		
+		/*
+		 * mc.getTextureManager().bindTexture(logo);
+		 * 
+		 * 
+		 * int x = 1; int y = 1; int w =64; int he = 32;
+		 * Gui.drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, he, w, he);
+		 */
 		GL11.glPopMatrix();
 	}
 }

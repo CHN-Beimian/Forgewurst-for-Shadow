@@ -18,64 +18,108 @@ import com.google.gson.JsonPrimitive;
 import net.wurstclient.forge.clickgui.ClickGui;
 import net.wurstclient.forge.compatibility.WHackList;
 import net.wurstclient.forge.hacks.*;
+import net.wurstclient.forge.hacks.combat.AimBotHack;
+import net.wurstclient.forge.hacks.combat.AutoClickerHack;
+import net.wurstclient.forge.hacks.combat.AutoLogHack;
+import net.wurstclient.forge.hacks.combat.AutoTotemHack;
+import net.wurstclient.forge.hacks.combat.BowAimBotHack;
+import net.wurstclient.forge.hacks.combat.CriticalHack;
+import net.wurstclient.forge.hacks.combat.InfiniteAuraHack;
+import net.wurstclient.forge.hacks.combat.KillAuraHack;
+import net.wurstclient.forge.hacks.misc.AntiAFK;
+import net.wurstclient.forge.hacks.misc.AntiBotHack;
+import net.wurstclient.forge.hacks.misc.AntiSpamHack;
+import net.wurstclient.forge.hacks.misc.AutoCurseHack;
+import net.wurstclient.forge.hacks.misc.AutoSayHack;
+import net.wurstclient.forge.hacks.misc.AutoTextHack;
+import net.wurstclient.forge.hacks.misc.BlinkHack;
+import net.wurstclient.forge.hacks.misc.ClickGuiHack;
+import net.wurstclient.forge.hacks.misc.FullbrightHack;
+import net.wurstclient.forge.hacks.misc.KickPlayerHack;
+import net.wurstclient.forge.hacks.movement.AirJumpHack;
+import net.wurstclient.forge.hacks.movement.AutoSprintHack;
+import net.wurstclient.forge.hacks.movement.AutoWalkHack;
+import net.wurstclient.forge.hacks.movement.BhopHack;
+import net.wurstclient.forge.hacks.movement.BunnyHopHack;
+import net.wurstclient.forge.hacks.movement.GlideHack;
+import net.wurstclient.forge.hacks.movement.JesusHack;
+import net.wurstclient.forge.hacks.movement.LimitJumpHack;
+import net.wurstclient.forge.hacks.movement.LongJump;
+import net.wurstclient.forge.hacks.player.AntiFall;
+import net.wurstclient.forge.hacks.player.AntiWeather;
+import net.wurstclient.forge.hacks.player.AutoArmorHack;
+import net.wurstclient.forge.hacks.player.AutoFarmHack;
+import net.wurstclient.forge.hacks.player.AutoFishHack;
+import net.wurstclient.forge.hacks.player.AutoSoupHack;
+import net.wurstclient.forge.hacks.player.AutoSwimHack;
+import net.wurstclient.forge.hacks.player.AutoToolHack;
+import net.wurstclient.forge.hacks.player.BedFuckerHack;
+import net.wurstclient.forge.hacks.player.ChestStealHack;
+import net.wurstclient.forge.hacks.player.Derp;
+import net.wurstclient.forge.hacks.player.FastBreakHack;
+import net.wurstclient.forge.hacks.player.FastLadderHack;
+import net.wurstclient.forge.hacks.player.FastPlaceHack;
+import net.wurstclient.forge.hacks.player.FlashHack;
+import net.wurstclient.forge.hacks.player.FreecamHack;
+import net.wurstclient.forge.hacks.player.NoFallHack;
+import net.wurstclient.forge.hacks.player.NoHurtcamHack;
+import net.wurstclient.forge.hacks.render.ArmorHUDHack;
+import net.wurstclient.forge.hacks.render.ChestEspHack;
+import net.wurstclient.forge.hacks.render.InformationHUD;
+import net.wurstclient.forge.hacks.render.ItemEspHack;
+import net.wurstclient.forge.hacks.render.MobEspHack;
+import net.wurstclient.forge.hacks.render.MobSpawnEspHack;
+import net.wurstclient.forge.hacks.render.MultiAura;
 import net.wurstclient.forge.settings.Setting;
 import net.wurstclient.forge.utils.JsonUtils;
 
 public final class HackList extends WHackList {
 	public static HackList hacklist;
 	//
-	
-	public final InformationHUD informationHUD=register(new InformationHUD());
-	public final TeamsHack teamsHack=register(new TeamsHack());
-	public final TeleportHitHack teleportHitHack=register(new TeleportHitHack());
-	public final FastSleepingHack fastSleepingHack=register(new FastSleepingHack());
-	public final PluginGetterHack pluginGetterHack=register(new PluginGetterHack());
-	public final PVPHack pvpHack=register(new PVPHack());
-	public final TestHack testHack=register(new TestHack());
-	public final AntiBotHack antiBotHack=register(new AntiBotHack());
-	public final AimBotHack aimBotHack=register(new AimBotHack());
-	private final AutoSayHack autoSayHack=register(new AutoSayHack());
-	private final KickPlayerHack kickPlayerHack=register(new KickPlayerHack());
-	private final BedFuckerHack bedFuckerHack=register(new BedFuckerHack());
-	private final BackHack backHack=register(new BackHack());
-	private final BhopHack bhopHack=register(new BhopHack());
-	private final LimitJumpHack limitJumpHack=register(new LimitJumpHack());
-	public final InfiniteAuraHack infiniteAuraHack=register(new InfiniteAuraHack());
-	public final FastUseHack fastUseHack=register(new FastUseHack());
-	public final RegenHack regenHack=register(new RegenHack());
-	public final VelocityHack velocityHack =register(new VelocityHack());
-	public final ServerHack serverHack=register(new ServerHack());
-	public final ChestStealHack chestStealHack=register(new ChestStealHack());
-	public final NoticeHack noticeHack=register(new NoticeHack());
-	public final NoHurtHack noHurtHack =register(new NoHurtHack());
-	public final UpHack upHack=register(new UpHack());
-	public final TeleportHack teleportHack=register(new TeleportHack());
-	public final SkinDerpHack skinDerpHack=register(new SkinDerpHack());
-	public final BowAimBotHack bowAimBotHack =register(new BowAimBotHack());
-	public final AutoClickerHack autoClickerHack =register(new AutoClickerHack());
-	public final StepHack stepHack =register(new StepHack());
-	public final PropagandaHack propagandaHack=register(new PropagandaHack());
-	public final SpeedHack speedHack =register(new SpeedHack());
-	public final GuiMoveHack guiMoveHack =register(new GuiMoveHack());
-	public final AutoLogHack autoLogHack =register(new AutoLogHack());
-	public final AutoTextHack autoTextHack =register(new AutoTextHack());
-	
-	public final ButtonHack buttonHack =register(new ButtonHack());
-	public final CustomChat customChat =register(new CustomChat());
-	public final MultiAura massKilAuraHack =register(new MultiAura());
-	public final AutoRespawnHack autoRespawnHack =register(new AutoRespawnHack());
-	public final AutoSoupHack autoSoup =register(new AutoSoupHack());
-	public final NoClipHack noClipHack = register(new NoClipHack());
+
+	public final InformationHUD informationHUD = register(new InformationHUD());
+	public final TeamsHack teamsHack = register(new TeamsHack());
+	public final TeleportHitHack teleportHitHack = register(new TeleportHitHack());
+	public final AntiBotHack antiBotHack = register(new AntiBotHack());
+	public final AimBotHack aimBotHack = register(new AimBotHack());
+	private final AutoSayHack autoSayHack = register(new AutoSayHack());
+	private final KickPlayerHack kickPlayerHack = register(new KickPlayerHack());
+	private final BedFuckerHack bedFuckerHack = register(new BedFuckerHack());
+	private final AntiFall antiFall = register(new AntiFall());
+	private final BhopHack bhopHack = register(new BhopHack());
+	private final LimitJumpHack limitJumpHack = register(new LimitJumpHack());
+	public final InfiniteAuraHack infiniteAuraHack = register(new InfiniteAuraHack());
+
+	public final RegenHack regenHack = register(new RegenHack());
+	public final VelocityHack velocityHack = register(new VelocityHack());
+
+	public final ChestStealHack chestStealHack = register(new ChestStealHack());
+
+	public final TeleportHack teleportHack = register(new TeleportHack());
+	public final SkinDerpHack skinDerpHack = register(new SkinDerpHack());
+	public final BowAimBotHack bowAimBotHack = register(new BowAimBotHack());
+	public final AutoClickerHack autoClickerHack = register(new AutoClickerHack());
+	public final StepHack stepHack = register(new StepHack());
+
+	public final SpeedHack speedHack = register(new SpeedHack());
+
+	public final AutoLogHack autoLogHack = register(new AutoLogHack());
+	public final AutoTextHack autoTextHack = register(new AutoTextHack());
+
+	public final MultiAura massKilAuraHack = register(new MultiAura());
+
+	public final AutoSoupHack autoSoup = register(new AutoSoupHack());
+
 	public final TpAuraHack tpAura = register(new TpAuraHack());
 	public final AutoTotemHack autoTotemHack = register(new AutoTotemHack());
 	public final ScaffoldHack scaffoldHack = register(new ScaffoldHack());
 	public final SuperFlyHack superFly = register(new SuperFlyHack());
-	public final TracersHack tracersHack = register(new TracersHack());
+
 	public final ArmorHUDHack armorHUDHack = register(new ArmorHUDHack());
-	public final CancelPacketHack cancelPacketHack = register(new CancelPacketHack());
+
 	public final CriticalHack criticalHack = register(new CriticalHack());
 	public final Derp derp = register(new Derp());
-	public final TwerkHack twerkHack = register(new TwerkHack());
+
 	public final FlashHack flashHack = register(new FlashHack());
 	public final AntiWeather antiWeather = register(new AntiWeather());
 	public final AntiAFK antiAFK = register(new AntiAFK());
@@ -96,13 +140,12 @@ public final class HackList extends WHackList {
 	public final FastBreakHack fastBreakHack = register(new FastBreakHack());
 	public final FastLadderHack fastLadderHack = register(new FastLadderHack());
 	public final FastPlaceHack fastPlaceHack = register(new FastPlaceHack());
-	public final FlightHack flightHack = register(new FlightHack());
 	public final FreecamHack freecamHack = register(new FreecamHack());
 	public final FullbrightHack fullbrightHack = register(new FullbrightHack());
 	public final GlideHack glideHack = register(new GlideHack());
 	public final ItemEspHack itemEspHack = register(new ItemEspHack());
 	public final JesusHack jesusHack = register(new JesusHack());
-	public final KillauraHack killauraHack = register(new KillauraHack());
+	public final KillAuraHack killAuraHack = register(new KillAuraHack());
 	public final MobEspHack mobEspHack = register(new MobEspHack());
 	public final MobSpawnEspHack mobSpawnEspHack = register(new MobSpawnEspHack());
 	public final NoFallHack noFallHack = register(new NoFallHack());
@@ -117,7 +160,9 @@ public final class HackList extends WHackList {
 	public final TimerHack timerHack = register(new TimerHack());
 	public final TunnellerHack tunnellerHack = register(new TunnellerHack());
 	public final XRayHack xRayHack = register(new XRayHack());
-
+	public final LongJump longJump =register(new LongJump());
+	
+	
 	private final Path enabledHacksFile;
 	private final Path settingsFile;
 	private boolean disableSaving;
@@ -242,8 +287,9 @@ public final class HackList extends WHackList {
 			e.printStackTrace();
 		}
 	}
+
 	public static HackList instance() {
 		return hacklist;
 	}
-	
+
 }

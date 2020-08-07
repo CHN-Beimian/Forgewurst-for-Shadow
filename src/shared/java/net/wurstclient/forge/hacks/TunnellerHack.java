@@ -89,7 +89,7 @@ public final class TunnellerHack extends Hack
 				+ "lava and other dangers, there is no guarantee\n"
 				+ "that it won't die. Only send it out with gear\n"
 				+ "that you don't mind losing.");
-		setCategory(Category.BLOCKS);
+		setCategory(Category.PLAYER);
 		addSetting(size);
 		addSetting(limit);
 		addSetting(torches);
@@ -149,7 +149,7 @@ public final class TunnellerHack extends Hack
 	{
 		HackList hax = wurst.getHax();
 		Hack[] incompatibleHax = {hax.autoToolHack, hax.autoWalkHack,
-			hax.blinkHack, hax.flightHack, hax.nukerHack, hax.sneakHack};
+			hax.blinkHack, hax.superFly, hax.nukerHack, hax.sneakHack};
 		for(Hack hack : incompatibleHax)
 			hack.setEnabled(false);
 		

@@ -123,7 +123,7 @@ public class TpAuraHack extends Hack {
 	protected void onEnable() {
 		wurst.getHax().autoClickerHack.setEnabled(false);
 		wurst.getHax().massKilAuraHack.setEnabled(false);
-		wurst.getHax().killauraHack.setEnabled(false);
+		wurst.getHax().killAuraHack.setEnabled(false);
 		EntityPlayerSP player = mc.player;
 		if (player != null) {
 			player.noClip = true;

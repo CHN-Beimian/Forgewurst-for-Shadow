@@ -40,31 +40,31 @@ public class FontManager {
         defaultFont = new TTFFontRenderer(executorService, textureQueue, new Font("Verdana", Font.PLAIN, 18));
         try {
             for (int i : new int[]{6, 7, 8, 10, 11, 12, 14}) {
-                InputStream istream = getClass().getResourceAsStream("assets/hurricane/SF-UI-Display-Regular.otf");
+                InputStream istream = getClass().getResourceAsStream("assets/shadow/SF-UI-Display-Regular.otf");
                 Font myFont = Font.createFont(Font.PLAIN, istream);
                 myFont = myFont.deriveFont(Font.PLAIN, i);
                 fonts.put("SFR " + i, new TTFFontRenderer(executorService, textureQueue, myFont));
             }
             for (int i : new int[]{6, 7, 8,9, 11}) {
-                InputStream istream = getClass().getResourceAsStream("assets/hurricane/SF-UI-Display-Bold.otf");
+                InputStream istream = getClass().getResourceAsStream("assets/shadow/SF-UI-Display-Bold.otf");
                 Font myFont = Font.createFont(Font.PLAIN, istream);
                 myFont = myFont.deriveFont(Font.PLAIN, i);
                 fonts.put("SFB " + i, new TTFFontRenderer(executorService, textureQueue, myFont));
             }
             for (int i : new int[]{6, 7, 8, 9, 11, 12}) {
-                InputStream istream = getClass().getResourceAsStream("assets/hurricane/SF-UI-Display-Medium.otf");
+                InputStream istream = getClass().getResourceAsStream("assets/shadow/SF-UI-Display-Medium.otf");
                 Font myFont = Font.createFont(Font.PLAIN, istream);
                 myFont = myFont.deriveFont(Font.PLAIN, i);
                 fonts.put("SFM " + i, new TTFFontRenderer(executorService, textureQueue, myFont));
             }
             for (int i : new int[]{17, 10, 9, 8, 7, 6}) {
-                InputStream istream = getClass().getResourceAsStream("assets/hurricane/SF-UI-Display-Light.otf");
+                InputStream istream = getClass().getResourceAsStream("assets/shadow/SF-UI-Display-Light.otf");
                 Font myFont = Font.createFont(Font.PLAIN, istream);
                 myFont = myFont.deriveFont(Font.PLAIN, i);
                 fonts.put("SFL " + i, new TTFFontRenderer(executorService, textureQueue, myFont));
             }
             for (int i : new int[]{19}) {
-                InputStream istream = getClass().getResourceAsStream("assets/hurricane/Jigsaw-Regular.otf");
+                InputStream istream = getClass().getResourceAsStream("assets/shadow/Jigsaw-Regular.otf");
                 Font myFont = Font.createFont(Font.PLAIN, istream);
                 myFont = myFont.deriveFont(Font.PLAIN, i);
                 fonts.put("JIGR " + i, new TTFFontRenderer(executorService, textureQueue, myFont));

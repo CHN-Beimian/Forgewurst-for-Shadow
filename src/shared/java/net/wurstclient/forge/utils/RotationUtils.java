@@ -27,7 +27,7 @@ import net.wurstclient.fmlevents.WPreMotionEvent;
 import net.wurstclient.forge.ForgeWurst;
 import net.wurstclient.forge.compatibility.WMinecraft;
 import net.wurstclient.forge.compatibility.WVec3d;
-import net.wurstclient.forge.hacks.KillauraHack;
+import net.wurstclient.forge.hacks.combat.KillAuraHack;
 
 @Mod.EventBusSubscriber
 public final class RotationUtils {

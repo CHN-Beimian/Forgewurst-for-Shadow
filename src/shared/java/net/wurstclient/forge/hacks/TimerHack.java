@@ -27,7 +27,7 @@ public final class TimerHack extends Hack
 	public TimerHack()
 	{
 		super("Timer", "Changes the speed of almost everything.");
-		setCategory(Category.OTHER);
+		setCategory(Category.PLAYER);
 		addSetting(speed);
 	}
 	

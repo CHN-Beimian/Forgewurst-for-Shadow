@@ -40,11 +40,11 @@ import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRema
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import net.wurstclient.fmlevents.listener.EventManager;
+
 import net.wurstclient.forge.analytics.JGoogleAnalyticsTracker;
 import net.wurstclient.forge.clickgui.ClickGui;
 import net.wurstclient.forge.compatibility.WMinecraft;
-import net.wurstclient.forge.hacks.ClickGuiHack.InventoryButtonAdder;
+import net.wurstclient.forge.hacks.misc.ClickGuiHack.InventoryButtonAdder;
 import net.wurstclient.forge.loader.ModEnemyLoader;
 import net.wurstclient.forge.loader.ModFriendsLoader;
 import net.wurstclient.forge.loader.ModKeyLoader;
@@ -52,14 +52,13 @@ import net.wurstclient.forge.loader.ModMessageLoader;
 import net.wurstclient.forge.loader.ModNoticeLoader;
 import net.wurstclient.forge.update.WurstUpdater;
 import net.wurstclient.forge.utils.management.FontManager;
-import net.wurstclient.zenwix.hothack.loader.EventLoader;
 
 @Mod(modid = ForgeWurst.MODID,
 	version = ForgeWurst.VERSION,
 	updateJSON = "https://afdian.net/@beimian")
 public  class ForgeWurst
 {
-	public static final String MODID = "hurricane";
+	public static final String MODID = "shadow";
 	public static final String VERSION = "1.1.0";
 	public static Logger log = Logger.getLogger("GraphRevo");
 	
@@ -101,7 +100,7 @@ public  class ForgeWurst
         new ModFriendsLoader();
 		new ModMessageLoader();
 		new ModKeyLoader();
-		EventManager eventManager = new EventManager(this);
+	
 		if(event.getSide() == Side.SERVER)
 			return;
 		String mcClassName = Minecraft.class.getName().replace(".", "/");

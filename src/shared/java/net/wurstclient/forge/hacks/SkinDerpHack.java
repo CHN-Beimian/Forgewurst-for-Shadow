@@ -35,7 +35,7 @@ public class SkinDerpHack extends Hack {
 
 	public SkinDerpHack() {
 		super("SkinDerp", "Randomly toggles parts of your skin.");
-		setCategory(Category.FUN);
+		setCategory(Category.MISC);
 		addSetting(mode);
 		addSetting(slowness);
 	}
